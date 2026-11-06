@@ -1,0 +1,9 @@
+version: 1
+commands:
+  setup: []          # run before readiness dry runs and before each Build
+  fix: []            # deterministic fixers, run once after each builder round
+  checks: []         # project checks, e.g. {name: test, run: "mix test"}
+  acceptance:
+    run: 'NODE_PATH="$KOGEN_CUCUMBER" "$KOGEN_NODE" "$KOGEN_CUCUMBER/@cucumber/cucumber/bin/cucumber.js" --strict --require ''features/steps/*.js'' --format "message:$KOGEN_ACCEPTANCE_REPORT" "$KOGEN_ACCEPTANCE_FEATURES"'
+    steps_dir: 'features/steps'
+protect: []          # check configuration the Build must not change, e.g. .credo.exs
