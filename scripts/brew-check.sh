@@ -57,8 +57,11 @@ run_steps() {
   # Only a tap this run created is untapped: a failed tap (for example an existing kogenai/tap) stays.
   step tap brew tap "$tap" "$tmp/repo" || return 1
   tap_ran=1
-  trust_ran=1
-  step trust brew trust --tap "$tap" || return 1
+  # A Homebrew without a trust subcommand has no untrusted taps: skip trust and untrust there.
+  if brew trust --help >/dev/null 2>&1; then
+    trust_ran=1
+    step trust brew trust "$tap" || return 1
+  fi
   step style brew style "$formula" || return 1
   step audit brew audit --strict "$formula" || return 1
   step install brew install "$formula" || return 1
@@ -79,7 +82,7 @@ run_cleanup() {
     step_cleanup uninstall_new || status=1
   fi
   if [ "$trust_ran" = 1 ]; then
-    step_cleanup brew untrust --tap "$tap" || status=1
+    step_cleanup brew untrust "$tap" || status=1
   fi
   if [ "$tap_ran" = 1 ]; then
     step_cleanup brew untap "$tap" || status=1
