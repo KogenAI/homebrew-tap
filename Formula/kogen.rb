@@ -1,9 +1,9 @@
 class Kogen < Formula
   desc "Takes one requested feature through shaping, building, verifying and committing"
   homepage "https://kogen.dev"
-  url "https://github.com/KogenAI/kogen/releases/download/v0.1.0-dev.d9bab907/kogen-v0.1.0-dev.d9bab907-linux-x86_64.tar.gz"
-  version "0.1.0-dev.d9bab907"
-  sha256 "fb49b73b09b51bf814f440a967d9fc2308f021616dfcfcaab3ee99d39a876d88"
+  url "https://github.com/KogenAI/kogen/releases/download/v0.1.0-dev.0e72094b/kogen-v0.1.0-dev.0e72094b-linux-x86_64.tar.gz"
+  version "0.1.0-dev.0e72094b"
+  sha256 "30229860c6224b5bccc334ecfd242c4ac51343bf481040fa01f51f3a2eceaeb2"
   license "Apache-2.0"
 
   depends_on "node"
@@ -12,8 +12,8 @@ class Kogen < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/KogenAI/kogen/releases/download/v0.1.0-dev.d9bab907/kogen-v0.1.0-dev.d9bab907-darwin-arm64.tar.gz"
-      sha256 "8a474b3f3d5dde2f68d8e21af0d4b1b91e89dc9e25479a93fdb831fe4a9e17e6"
+      url "https://github.com/KogenAI/kogen/releases/download/v0.1.0-dev.0e72094b/kogen-v0.1.0-dev.0e72094b-darwin-arm64.tar.gz"
+      sha256 "d8010551466420c02e74bb8c8379c136494c41737dfebfbfc131d19b6a386fd1"
     end
   end
 
